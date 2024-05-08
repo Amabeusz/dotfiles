@@ -23,6 +23,7 @@ return {
 			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev(), bufopts)
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next(), bufopts)
 			vim.keymap.set('n', '<leader>q', vim.lsp.diagnostic.set_loclist, bufopts)
+			vim.keymap.set('n', 'gO', require("man").show_toc(), bufopts)
 		end
 
 		lspconfig.gopls.setup{
@@ -41,5 +42,4 @@ return {
 			on_attach = on_attach,
 		}
 	end,
-
 }
