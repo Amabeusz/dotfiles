@@ -41,5 +41,7 @@ return {
 			},
 			on_attach = on_attach,
 		}
+
+		lspconfig.lua_ls.setup{}
 	end,
 }
