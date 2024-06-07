@@ -5,7 +5,7 @@ return {
 
 		local on_attach = function(client, bufnr)
 			-- See `:help vim.lsp.*` for documentation on any of the below functions
-			local bufopts = { noremap=true, silent=true, buffer=bufnr }
+			local bufopts = { noremap = true, silent = true, buffer = bufnr }
 			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -24,11 +24,12 @@ return {
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next(), bufopts)
 			vim.keymap.set('n', '<leader>q', vim.lsp.diagnostic.set_loclist, bufopts)
 			vim.keymap.set('n', 'gO', require("man").show_toc(), bufopts)
+			--{ "<leader>td", "<cmd>lua require('dap-go').debug_test()<CR>", desc = "Debug Nearest (Go)" },
+		--	vim.keymap.set('n', "<leader>td", require("dap-go").debug_test(), bufopts)
 		end
 
-		lspconfig.gopls.setup{
-			cmd = {'gopls'},
-			capabilities = capabilities,
+		lspconfig.gopls.setup {
+			cmd = { 'gopls' },
 			settings = {
 				gopls = {
 					experimentalPostfixCompletions = true,
@@ -41,7 +42,6 @@ return {
 			},
 			on_attach = on_attach,
 		}
-
-		lspconfig.lua_ls.setup{}
-	end,
+		lspconfig.lua_ls.setup {}
+	end
 }
