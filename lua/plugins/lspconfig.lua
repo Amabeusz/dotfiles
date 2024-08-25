@@ -25,7 +25,7 @@ return {
 			vim.keymap.set('n', '<leader>q', vim.lsp.diagnostic.set_loclist, bufopts)
 			vim.keymap.set('n', 'gO', require("man").show_toc(), bufopts)
 			--{ "<leader>td", "<cmd>lua require('dap-go').debug_test()<CR>", desc = "Debug Nearest (Go)" },
-		--	vim.keymap.set('n', "<leader>td", require("dap-go").debug_test(), bufopts)
+			--	vim.keymap.set('n', "<leader>td", require("dap-go").debug_test(), bufopts)
 		end
 
 		lspconfig.gopls.setup {
@@ -42,6 +42,32 @@ return {
 			},
 			on_attach = on_attach,
 		}
-		lspconfig.lua_ls.setup {}
+		lspconfig.lua_ls.setup {
+			on_attach = on_attach,
+		}
+		lspconfig.clangd.setup {
+			cmd = { 'clangd' },
+			--cmd = {'clangd --check=\'V:\\dev\\c\\task-management\\todo.c'},
+			on_attach = on_attach
+		}
+		lspconfig.tsserver.setup {}
+		lspconfig.jdtls.setup {}
+	--	lspconfig.html.setup {
+	--		capabilities = {
+	--			textDocument = {
+	--				completion = {
+	--					completionItem ={
+	--						snippetSupport = true
+	--					}
+	--				}
+	--			}
+	--		},
+	--		configurationSection = { "html", "css", "javascript" },
+	--		embeddedLanguages = {
+	--			css = true,
+	--			javascript = true
+	--		},
+	--		provideFormatter = true
+	--	}
 	end
 }
